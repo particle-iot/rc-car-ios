@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		115D8CBA1738F180007D9871 /* spark-icon-140.png in Resources */ = {isa = PBXBuildFile; fileRef = 115D8CB91738F180007D9871 /* spark-icon-140.png */; };
 		11CE38921738E4990095A206 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CE38911738E4990095A206 /* UIKit.framework */; };
 		11CE38941738E4990095A206 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CE38931738E4990095A206 /* Foundation.framework */; };
 		11CE38961738E4990095A206 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CE38951738E4990095A206 /* CoreGraphics.framework */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		115D8CB91738F180007D9871 /* spark-icon-140.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spark-icon-140.png"; sourceTree = "<group>"; };
 		11CE388E1738E4990095A206 /* Spark RC Car.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spark RC Car.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11CE38911738E4990095A206 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		11CE38931738E4990095A206 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,6 +124,7 @@
 				11CE38A01738E4990095A206 /* AppDelegate.h */,
 				11CE38A11738E4990095A206 /* AppDelegate.m */,
 				11CE38A91738E4990095A206 /* MainStoryboard_iPhone.storyboard */,
+				115D8CB91738F180007D9871 /* spark-icon-140.png */,
 				11CE38AC1738E4990095A206 /* MainStoryboard_iPad.storyboard */,
 				11CE38AF1738E4990095A206 /* ViewController.h */,
 				11CE38B01738E4990095A206 /* ViewController.m */,
@@ -240,6 +243,7 @@
 				11CE38A81738E4990095A206 /* Default-568h@2x.png in Resources */,
 				11CE38AB1738E4990095A206 /* MainStoryboard_iPhone.storyboard in Resources */,
 				11CE38AE1738E4990095A206 /* MainStoryboard_iPad.storyboard in Resources */,
+				115D8CBA1738F180007D9871 /* spark-icon-140.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +471,7 @@
 				11CE38CB1738E49A0095A206 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		11CE38CC1738E49A0095A206 /* Build configuration list for PBXNativeTarget "Spark RC CarTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +480,7 @@
 				11CE38CE1738E49A0095A206 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

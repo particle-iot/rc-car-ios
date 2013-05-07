@@ -10,4 +10,10 @@
 
 @interface ViewController : UIViewController
 
+@property IBOutlet UISlider *leftSlider;
+@property IBOutlet UISlider *rightSlider;
+
+- (IBAction)leftValueChanged:(id)sender;
+- (IBAction)rightValueChanged:(id)sender;
+
 @end

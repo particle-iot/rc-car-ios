@@ -1,23 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="568" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Eon-1m-pdz" userLabel="Left Slider">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="276" id="UZq-31-PFB"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="leftValueChanged:" destination="2" eventType="valueChanged" id="IYS-zO-ktg"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="d80-2p-oLs" userLabel="Right Slider">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="276" id="1M1-Y8-V9X"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="rightValueChanged:" destination="2" eventType="valueChanged" id="X5f-bb-x0h"/>
+                                </connections>
+                            </slider>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="spark-icon-140.png" translatesAutoresizingMaskIntoConstraints="NO" id="jia-ol-A2G"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="RC Car" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCO-D1-xW2">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7sb-wm-Cjy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Eon-1m-pdz" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="default" id="0Tf-7i-W9Z"/>
+                            <constraint firstItem="iCO-D1-xW2" firstAttribute="top" secondItem="jia-ol-A2G" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="3Ww-H4-ngL"/>
+                            <constraint firstItem="jia-ol-A2G" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="3tY-LA-XaJ"/>
+                            <constraint firstItem="Eon-1m-pdz" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="102" id="MbY-G9-5ba"/>
+                            <constraint firstItem="iCO-D1-xW2" firstAttribute="trailing" secondItem="jia-ol-A2G" secondAttribute="trailing" type="default" id="Xvp-W1-HJH"/>
+                            <constraint firstItem="d80-2p-oLs" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="352" id="eKB-qI-xh4"/>
+                            <constraint firstItem="d80-2p-oLs" firstAttribute="top" secondItem="Eon-1m-pdz" secondAttribute="top" type="default" id="oyn-pa-b0x"/>
+                            <constraint firstItem="iCO-D1-xW2" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="sKJ-Wv-aZN"/>
+                            <constraint firstItem="iCO-D1-xW2" firstAttribute="leading" secondItem="jia-ol-A2G" secondAttribute="leading" type="default" id="xJw-qL-sIr"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="leftSlider" destination="Eon-1m-pdz" id="ruB-Uw-ZEt"/>
+                        <outlet property="rightSlider" destination="d80-2p-oLs" id="YMM-n4-wLD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="spark-icon-140.png" width="140" height="140"/>
+    </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="leftValueChanged:"/>
+                <relationship kind="action" name="rightValueChanged:"/>
+                <relationship kind="outlet" name="leftSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="rightSlider" candidateClass="UISlider"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
