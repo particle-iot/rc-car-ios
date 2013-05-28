@@ -8,7 +8,11 @@
 
 #import "ViewController.h"
 
+#define DEVICE_ID "MySparkCoreID"
+
 NSMutableData *receivedData;
+NSDate *leftMessageDate;
+NSDate *rightMessageDate;
 
 @interface ViewController ()
 
@@ -25,17 +29,20 @@ NSMutableData *receivedData;
 	CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI * -0.5);
   leftSlider.transform = trans;
   rightSlider.transform = trans;
+  
+  leftMessageDate = rightMessageDate = [NSDate date];
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 - (void)makeAPIRequestWithMessage:(NSString *)msg
 {
-  NSURL *url = [NSURL URLWithString:@"https://api.sprk.io/v1/devices/rccar"];
+  NSURL *url = [NSURL URLWithString:
+                [NSString stringWithFormat:@"https://api.sprk.io/v1/devices/%s", DEVICE_ID]];
   NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
   [req setHTTPMethod:@"POST"];
   
@@ -51,16 +58,48 @@ NSMutableData *receivedData;
   }
 }
 
+- (void)makeLeftAPIRequest
+{
+  leftMessageDate = [NSDate date];
+  int outValue = (int)(pow(leftSlider.value / leftSlider.maximumValue, 2) * 255);
+  NSString *bodyString = [NSString stringWithFormat:@"message=L%d", outValue];
+  [self makeAPIRequestWithMessage:bodyString];
+}
+
+- (void)makeRightAPIRequest
+{
+  rightMessageDate = [NSDate date];
+  int outValue = (int)(pow(rightSlider.value / rightSlider.maximumValue, 2) * 255);
+  NSString *bodyString = [NSString stringWithFormat:@"message=R%d", outValue];
+  [self makeAPIRequestWithMessage:bodyString];
+}
+
 - (IBAction)leftValueChanged:(id)sender
 {
-  NSString *bodyString = [NSString stringWithFormat:@"message=L%d", (int)leftSlider.value];
-  [self makeAPIRequestWithMessage:bodyString];
+  NSDate *now = [NSDate date];
+  if (0.2 < [now timeIntervalSinceDate:leftMessageDate])
+  {
+    [self makeLeftAPIRequest];
+  }
 }
 
 - (IBAction)rightValueChanged:(id)sender
 {
-  NSString *bodyString = [NSString stringWithFormat:@"message=R%d", (int)rightSlider.value];
-  [self makeAPIRequestWithMessage:bodyString];
+  NSDate *now = [NSDate date];
+  if (0.2 < [now timeIntervalSinceDate:rightMessageDate])
+  {
+    [self makeRightAPIRequest];
+  }
+}
+
+- (IBAction)leftTouchEnded:(id)sender
+{
+  [self makeLeftAPIRequest];
+}
+
+- (IBAction)rightTouchEnded:(id)sender
+{
+  [self makeRightAPIRequest];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

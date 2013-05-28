@@ -15,5 +15,7 @@
 
 - (IBAction)leftValueChanged:(id)sender;
 - (IBAction)rightValueChanged:(id)sender;
+- (IBAction)leftTouchEnded:(id)sender;
+- (IBAction)rightTouchEnded:(id)sender;
 
 @end
